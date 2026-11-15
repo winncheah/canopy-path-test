@@ -43,7 +43,8 @@
 .reward-sparkle{position:absolute;z-index:2;color:#d9a835;font-size:1.55rem;text-shadow:0 0 9px #ffdd72;animation:reward-sparkle 1.4s ease-in-out infinite alternate}
 .sparkle-one{top:4%;left:5%}.sparkle-two{right:0;top:28%;animation-delay:.35s}.sparkle-three{bottom:3%;left:12%;animation-delay:.7s}
 .reward-card h2{margin:3px 0 8px;font-size:clamp(1.5rem,7vw,2.25rem);letter-spacing:.04em;color:#263e4a}
-.reward-card>p:last-child{margin:0;color:#49565d;font-weight:650;font-size:.96rem;line-height:1.4}
+.reward-message{margin:0;color:#49565d;font-weight:650;font-size:.96rem;line-height:1.4}
+.reward-destination{margin:12px 0 0;padding:10px 12px;border-radius:14px;background:#e9dfc9;color:#263e4a;font-size:1.05rem;font-weight:900;line-height:1.35}
 @keyframes reward-card-pop{0%{opacity:0;transform:scale(.2)}65%{opacity:1;transform:scale(1.08)}100%{opacity:1;transform:scale(1)}}
 @keyframes reward-halo-pulse{from{transform:scale(.84);opacity:.68}to{transform:scale(1.1);opacity:1}}
 @keyframes reward-icon-float{from{translate:0 5px}to{translate:0 -7px}}
