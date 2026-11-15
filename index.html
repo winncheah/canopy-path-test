@@ -37,9 +37,15 @@
     <div class="practice-card">
       <span class="eyebrow" id="practiceCount">PRACTICE 1 OF 2</span><h1>Try a practice path</h1><p id="practiceInstruction">Start at S, trace through every square, and finish at E.</p>
       <div id="practiceGrid" class="practice-grid" aria-label="Practice path puzzle"></div>
-      <p id="practiceProgress" class="practice-feedback" aria-live="polite">0 / 4 squares</p><div id="practiceSuccess" class="practice-success hidden" role="status" aria-live="assertive">WELL DONE!</div><p id="practiceHint" class="small" aria-live="polite">Touch S and drag through adjacent squares to E.</p><p id="practiceDecisionPrompt" class="practice-decision hidden">Would you like to practise again, or are you ready to start the study?</p><p id="practicePauseNote" class="small hidden">If a problem interrupts you, tap Pause. If everything is okay, please continue playing.</p>
-      <div class="practice-actions"><button id="practiceReset" class="secondary" type="button">Reset</button><button id="practiceNext" class="primary" type="button" disabled>Next practice</button><button id="practiceAgain" class="secondary hidden" type="button">Practise again</button><button id="practiceToSetup" class="primary hidden" type="button">I understand — start the game</button></div>
+      <p id="practiceProgress" class="practice-feedback" aria-live="polite">0 / 4 squares</p><div id="practiceSuccess" class="practice-success hidden" role="status" aria-live="assertive">WELL DONE!</div><p id="practiceHint" class="small" aria-live="polite">Touch S and drag through adjacent squares to E.</p>
+      <div class="practice-actions"><button id="practiceReset" class="secondary" type="button">Reset</button><button id="practiceNext" class="primary" type="button" disabled>Next practice</button></div>
     </div>
+  </section>
+  <section id="pauseIntro" class="screen hidden tutorial-screen">
+    <div class="pause-intro-card"><span class="eyebrow">BEFORE YOU BEGIN</span><h1>If you need a pause</h1><p>If a problem interrupts you, tap <strong>Pause</strong>. The screen will go black and your game timer will stop. Tap <strong>Resume</strong> when you are ready.</p><p>If everything is okay, please continue playing.</p><button id="pauseIntroContinue" class="primary" type="button">Continue</button></div>
+  </section>
+  <section id="practiceDecision" class="screen hidden tutorial-screen">
+    <div class="pause-intro-card"><span class="eyebrow">PRACTICE COMPLETE</span><h1>Ready to begin?</h1><p>Would you like to practise again, or start the study?</p><div class="practice-choice-actions"><button id="practiceAgainChoice" class="secondary" type="button">Practise again</button><button id="practiceStartChoice" class="primary" type="button">Start</button></div></div>
   </section>
   <section id="setup" class="screen hidden">
     <header><span class="eyebrow">RESEARCH GAME · PROTOTYPE</span><h1>Canopy Paths</h1><p>Trace a continuous path through every green square.</p></header>
