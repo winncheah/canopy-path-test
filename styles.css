@@ -17,10 +17,10 @@
 .tutorial-card #conditionGuideImage{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;border-radius:0;box-shadow:none}
 
 #conditionSlides.level-story-overlay{position:fixed;inset:0;z-index:12;min-height:100svh}
-.participant-pause{display:none}
-#game.participant-view nav .participant-pause{display:inline-flex}
+.global-pause{position:fixed;z-index:25;top:max(12px,calc(env(safe-area-inset-top) + 8px));right:12px;padding:10px 15px;border:1px solid #ffffff88;border-radius:999px;background:#252d36e8;color:#fff;font-size:.9rem;box-shadow:0 3px 12px #0007;backdrop-filter:blur(8px)}
 #game.participant-view nav .condition-label,#game.participant-view nav>span:last-child{display:none}
 #game.participant-view nav .researcher-tools-toggle{display:none!important}
+.transitions-paused .condition-slide-progress-fill,.transitions-paused .bonus-intro-copy,.transitions-paused .reward-art *{animation-play-state:paused!important}
 .pause-screen{position:fixed;inset:0;z-index:30;display:grid;place-items:center;background:#000;color:#fff}
 .pause-panel{display:flex;flex-direction:column;align-items:center;gap:14px;width:min(84vw,340px);text-align:center}
 .pause-panel h1{margin:0 0 8px;font-size:2rem}

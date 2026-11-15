@@ -37,7 +37,7 @@
     <div class="practice-card">
       <span class="eyebrow" id="practiceCount">PRACTICE 1 OF 2</span><h1>Try a practice path</h1><p id="practiceInstruction">Start at S, trace through every square, and finish at E.</p>
       <div id="practiceGrid" class="practice-grid" aria-label="Practice path puzzle"></div>
-      <p id="practiceProgress" class="practice-feedback" aria-live="polite">0 / 4 squares</p><div id="practiceSuccess" class="practice-success hidden" role="status" aria-live="assertive">WELL DONE!</div><p id="practiceHint" class="small" aria-live="polite">Touch S and drag through adjacent squares to E.</p><p id="practiceDecisionPrompt" class="practice-decision hidden">Would you like to practise again, or are you ready to start the study?</p>
+      <p id="practiceProgress" class="practice-feedback" aria-live="polite">0 / 4 squares</p><div id="practiceSuccess" class="practice-success hidden" role="status" aria-live="assertive">WELL DONE!</div><p id="practiceHint" class="small" aria-live="polite">Touch S and drag through adjacent squares to E.</p><p id="practiceDecisionPrompt" class="practice-decision hidden">Would you like to practise again, or are you ready to start the study?</p><p id="practicePauseNote" class="small hidden">If a problem interrupts you, tap Pause. If everything is okay, please continue playing.</p>
       <div class="practice-actions"><button id="practiceReset" class="secondary" type="button">Reset</button><button id="practiceNext" class="primary" type="button" disabled>Next practice</button><button id="practiceAgain" class="secondary hidden" type="button">Practise again</button><button id="practiceToSetup" class="primary hidden" type="button">I understand — start the game</button></div>
     </div>
   </section>
@@ -59,7 +59,7 @@
   </section>
   <section id="game" class="screen hidden">
     <div class="scene" id="scene">
-      <nav><button id="quit" class="quiet">Exit</button><button id="pauseGame" class="quiet participant-pause" type="button">Pause</button><button id="researcherToolsToggle" class="quiet researcher-tools-toggle hidden" type="button" aria-expanded="false" aria-label="Open researcher tools">Tools</button><span class="condition-label"><button id="conditionTag" class="condition-toggle" type="button" disabled>Condition</button><small id="sceneTag">Matched scene</small></span><span><small id="timerLabel">LEVELS 1–5 · SHARED TIME LEFT</small> <span id="timer">03:00</span></span></nav>
+      <nav><button id="quit" class="quiet">Exit</button><button id="researcherToolsToggle" class="quiet researcher-tools-toggle hidden" type="button" aria-expanded="false" aria-label="Open researcher tools">Tools</button><span class="condition-label"><button id="conditionTag" class="condition-toggle" type="button" disabled>Condition</button><small id="sceneTag">Matched scene</small></span><span><small id="timerLabel">LEVELS 1–5 · SHARED TIME LEFT</small> <span id="timer">03:00</span></span></nav>
       <div id="researcherToolsPanel" class="researcher-tools-panel hidden"><div id="researcherMetrics" class="researcher-metrics"><span>Stage used <b id="stageUsed">00:00</b></span><span>Total game <b id="totalUsed">00:00</b></span><span id="stageHistory">Completed stages: —</span></div><label id="researcherLevelControl" class="researcher-level-control">Researcher level<select id="researcherLevel" aria-label="Choose a level"></select></label><button id="previewSurveyButton" class="secondary preview-survey-button" type="button">Preview end survey</button></div>
       <div class="environment" id="environment"></div><div class="shade"></div><div id="bonusIntro" class="bonus-intro hidden" aria-live="polite"><div class="bonus-intro-copy"><strong>MORE CHALLENGING PATH</strong><span>EXTRA PATH</span></div></div>
       <section id="missionReward" class="mission-reward hidden" aria-live="assertive" aria-label="Mission reward">
@@ -77,8 +77,9 @@
       <div id="grid" class="grid" aria-label="Puzzle tiles"></div>
     </div>
     <div class="game-foot"><p id="hint" class="sr-only" aria-live="polite"></p><div class="path-controls"><button id="undo" class="secondary" disabled>Undo</button><button id="redo" class="secondary" disabled>Redo</button><button id="reset" class="secondary">Reset</button></div></div>
-    <section id="pauseScreen" class="pause-screen hidden" aria-label="Game paused"><div class="pause-panel"><h1>Paused</h1><button id="resumeGame" class="primary" type="button">Resume</button><button id="pauseExit" class="secondary" type="button">Exit</button></div></section>
   </section>
+  <button id="pauseGame" class="global-pause hidden" type="button" aria-label="Pause game">Pause</button>
+  <section id="pauseScreen" class="pause-screen hidden" aria-label="Game paused"><div class="pause-panel"><h1>Paused</h1><button id="resumeGame" class="primary" type="button">Resume</button><button id="pauseExit" class="secondary" type="button">Exit</button></div></section>
   <section id="postSurvey" class="screen hidden">
     <header><span id="postSurveyEyebrow" class="eyebrow">EXPERIMENT 1 · FINAL QUESTIONS</span><h1 id="postSurveyTitle">About the game background</h1><p id="postSurveyIntro">Please answer these questions about the background you saw while playing.</p></header>
     <form id="postSurveyForm" class="panel consent-panel">
