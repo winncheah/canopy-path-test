@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <meta name="theme-color" content="#10231e"><title>Canopy Paths · Research prototype</title><link rel="stylesheet" href="styles.css">
+</head><body>
+<main id="app">
+  <section id="welcome" class="screen">
+    <header><span class="eyebrow">RESEARCH STUDY · PARTICIPANT INFORMATION</span><h1>Study information</h1><p>Please read this information before deciding whether to take part.</p></header>
+    <div class="panel consent-panel">
+      <h2>Invitation and purpose</h2><p>You are invited to take part in a research study about how people experience visual environments while playing a one-line puzzle game. The study compares versions of the game with different background scenes.</p>
+      <h3>What will I do?</h3><p>You will use a mobile phone to play the puzzle game. The game records gameplay time, puzzle scores and progress, touch interactions, errors, and attempts. Before starting, you will view a short introduction, complete two practice puzzles, and see the time commitment for your selected experiment on the study setup page.</p>
+      <h3>Taking part is your choice</h3><p>Taking part is voluntary. You may stop at any time by leaving the game. Choosing not to take part, or stopping, will not affect your studies or relationship with your school or university.</p>
+      <h3>Possible discomforts and benefits</h3><p>You may experience mild eye strain or frustration while using the phone or solving puzzles. You can take a break or stop. There may be no direct benefit to you; the findings may help researchers understand responses to different visual environments.</p>
+      <h3>Privacy and data</h3><p>Experiment 1 does not ask for a name, sign-in, or code entry. The game automatically assigns a numeric study number and records the assigned condition, consent confirmation and time, session start date and time, gameplay timing and progress, touch actions, errors, attempts, and three background questions. Experiment 2 uses a participant code to save progress between visits. In this prototype, records stay in the browser until downloaded; this is not a secure research database. Do not use this prototype to collect real participant data.</p>
+      <div class="ethics-placeholder"><strong>Researcher: complete these details before inviting participants.</strong><br>Study title: [Insert approved study title]<br>Researcher and institution: [Insert name and affiliation]<br>Questions or withdrawal: [Insert researcher contact details]<br>Ethics approval: [Insert committee name and approval reference]</div>
+      <button id="continueToConsent" class="primary">Continue to consent form</button>
+      <p class="small">This participant information page is a draft. Have the study team and ethics committee approve it before recruitment.</p>
+    </div>
+  </section>
+  <section id="consentPage" class="screen hidden">
+    <header><span class="eyebrow">RESEARCH STUDY · CONSENT</span><h1>Consent form</h1><p>Your choice is voluntary. Please select one option.</p></header>
+    <div class="panel consent-panel">
+      <h2>Consent to take part</h2><p>I confirm that I have read the study information, understand that I may stop at any time, and have had the opportunity to consider whether I want to participate.</p>
+      <label class="consent-choice"><input type="radio" id="consent" name="consentChoice" value="agree"><span>I agree to take part in this study.</span></label>
+      <label class="consent-choice"><input type="radio" id="consentDecline" name="consentChoice" value="decline"><span>I do not agree to take part.</span></label>
+      <p id="consentStatus" class="small" aria-live="polite"></p>
+      <button id="continueToSetup" class="primary" disabled>Continue to introduction slides</button>
+      <button id="backToInfo" class="secondary" type="button">Back to study information</button>
+      <p class="small">This consent form is a draft. Use it only after the approved wording and contact details have been added.</p>
+    </div>
+  </section>
+  <section id="guideSlides" class="screen hidden tutorial-screen">
+    <div class="tutorial-card"><div class="slide-count" id="slideCount">Slide 1 of 4</div><img id="guideImage" src="assets/tutorial/intro-01.gif" alt="Path Filler Game introduction slide"><div class="guide-actions"><button id="previousGuideSlide" class="secondary" type="button">Back</button><button id="nextGuideSlide" class="primary" type="button">Next</button></div></div>
+  </section>
+  <section id="practiceScreen" class="screen hidden tutorial-screen">
+    <div class="practice-card">
+      <span class="eyebrow" id="practiceCount">PRACTICE 1 OF 2</span><h1>Try a practice path</h1><p id="practiceInstruction">Start at S, trace through every square, and finish at E.</p>
+      <div id="practiceGrid" class="practice-grid" aria-label="Practice path puzzle"></div>
+      <p id="practiceProgress" class="practice-feedback" aria-live="polite">0 / 4 squares</p><div id="practiceSuccess" class="practice-success hidden" role="status" aria-live="assertive">WELL DONE!</div><p id="practiceHint" class="small" aria-live="polite">Touch S and drag through adjacent squares to E.</p><p id="practiceDecisionPrompt" class="practice-decision hidden">Would you like to practise again, or are you ready to start the study?</p>
+      <div class="practice-actions"><button id="practiceReset" class="secondary" type="button">Reset</button><button id="practiceNext" class="primary" type="button" disabled>Next practice</button><button id="practiceAgain" class="secondary hidden" type="button">Practise again</button><button id="practiceToSetup" class="primary hidden" type="button">I understand — start the game</button></div>
+    </div>
+  </section>
+  <section id="setup" class="screen hidden">
+    <header><span class="eyebrow">RESEARCH GAME · PROTOTYPE</span><h1>Canopy Paths</h1><p>Trace a continuous path through every green square.</p></header>
+    <div class="panel"><h2>Study session setup</h2>
+      <label>Experiment stage<select id="studyMode"><option value="all">Experiment 1 · Levels 1–20, timed by stage</option><option value="daily">Experiment 2 · Levels 1–20, timed by stage, up to 14 days</option><option id="testModeOption" value="test" hidden>Researcher test · no timer, record stage times</option></select></label>
+      <label id="researchModeRow" class="hidden">Research mode<select id="researchMode"><option value="researcher">Research view · condition switching allowed</option><option value="participant">Participant view · assigned background locked</option></select></label><div id="researcherConditionTools" class="hidden"><label id="conditionSelectRow">Study condition<select id="conditionGroup"><option value="green-green">Green path + green story</option><option value="nongreen-nongreen">City path + city story</option><option value="green-nongreen">Green path + city story</option><option value="nongreen-green">City path + green story</option></select></label><p class="small">Research view can preview all four combinations. Participant view locks the assigned combination. Balanced assignment across participants requires the study server.</p></div>
+      <p class="small">Levels 1–5 form one stop and one mission with a shared 3-minute visible-time limit. Story slides show once at the start; finishing the five levels goes to unused extra paths or the next stop. Extra paths have no story slides. Levels 6–10 each have a 2-minute stage; Levels 11–20 each have a 3-minute stage. Each has its own stop story; extra paths use the same background and never repeat for a participant. When a stage timer expires, the current puzzle is recorded unfinished and play continues. Experiment 1 needs no participant code. Experiment 2 saves progress and remaining stage time across the 14-day window; use the same participant code and browser on the same phone.</p>
+      <label id="participantCodeRow">Participant code <input id="participant" maxlength="40" placeholder="e.g. P-001"></label>
+      <label>Phone brightness confirmation<select id="brightnessCheck" required><option value="" selected disabled>Choose yes or no</option><option value="yes">Yes — my phone brightness is set between 60% and 80%</option><option value="no">No</option></select></label><p class="small" id="brightnessAdvice">Please set your phone brightness to 60–80% before each visit. This is self-reported; the game cannot read or verify your phone’s brightness setting.</p>
+      <button id="start" class="primary">Start session</button><p class="small">Prototype mode stores events only in this browser. Do not collect real participant data with this build.</p>
+      <button id="reviewInfo" class="secondary">Back to consent form</button>
+    </div>
+    <details class="panel"><summary>Matched scene pairs</summary><p>Four pairs are loaded from eight images: Pair 1 is the table/vase scene; Pair 2 is the arched plant wall; Pair 3 is the greenhouse arch; Pair 4 pairs the leafy wall with a simplified neutral wall and pottery image. Each pair appears in the same five level slots in both conditions. Every participant sees the assigned version of each pair five times across Levels 1–20.</p><p>To replace images, update the pair paths in <code>config.js</code> and keep the green/non-green counterparts in the same pair. The pair schedule in <code>stimulusPairOrder</code> has 20 entries and should contain each pair ID exactly five times.</p><p class="small">Participant condition allocation must be randomized securely by the deployed study server. Set fixed brightness equally for both conditions.</p></details>
+  </section>
+  <section id="conditionSlides" class="screen hidden tutorial-screen">
+    <div class="tutorial-card"><div class="slide-count" id="conditionSlideCount">Slide 1 of 2</div><div id="conditionSlideProgress" class="condition-slide-progress hidden" role="progressbar" aria-label="Story slide progress"><div class="condition-slide-progress-fill"></div></div><img id="conditionGuideImage" src="assets/condition-intros/green-intro-01.gif" alt="Game story slide"><div class="guide-actions"><button id="previousConditionSlide" class="secondary" type="button">Back</button><button id="nextConditionSlide" class="primary" type="button">Next</button></div></div>
+  </section>
+  <section id="game" class="screen hidden">
+    <div class="scene" id="scene">
+      <nav><button id="quit" class="quiet">Exit</button><button id="pauseGame" class="quiet participant-pause" type="button">Pause</button><button id="researcherToolsToggle" class="quiet researcher-tools-toggle hidden" type="button" aria-expanded="false" aria-label="Open researcher tools">Tools</button><span class="condition-label"><button id="conditionTag" class="condition-toggle" type="button" disabled>Condition</button><small id="sceneTag">Matched scene</small></span><span><small id="timerLabel">LEVELS 1–5 · SHARED TIME LEFT</small> <span id="timer">03:00</span></span></nav>
+      <div id="researcherToolsPanel" class="researcher-tools-panel hidden"><div id="researcherMetrics" class="researcher-metrics"><span>Stage used <b id="stageUsed">00:00</b></span><span>Total game <b id="totalUsed">00:00</b></span><span id="stageHistory">Completed stages: —</span></div><label id="researcherLevelControl" class="researcher-level-control">Researcher level<select id="researcherLevel" aria-label="Choose a level"></select></label><button id="previewSurveyButton" class="secondary preview-survey-button" type="button">Preview end survey</button></div>
+      <div class="environment" id="environment"></div><div class="shade"></div><div id="bonusIntro" class="bonus-intro hidden" aria-live="polite"><div class="bonus-intro-copy"><strong>MORE CHALLENGING PATH</strong><span>EXTRA PATH</span></div></div>
+      <section id="missionReward" class="mission-reward hidden" aria-live="assertive" aria-label="Mission reward">
+        <div class="reward-card"><p id="rewardStatus" class="reward-status">MISSION COMPLETE</p>
+          <div class="reward-art" aria-hidden="true">
+            <span class="reward-halo"></span><span class="reward-sparkle sparkle-one">✦</span><span class="reward-sparkle sparkle-two">✧</span><span class="reward-sparkle sparkle-three">✦</span>
+            <svg class="reward-icon icon-seed" viewBox="0 0 160 160"><defs><linearGradient id="seedGold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0a6"/><stop offset=".48" stop-color="#d89d48"/><stop offset="1" stop-color="#86522d"/></linearGradient></defs><ellipse cx="81" cy="83" rx="33" ry="49" transform="rotate(38 81 83)" fill="url(#seedGold)" stroke="#69432c" stroke-width="5"/><path d="M63 112c10-25 24-43 47-61" fill="none" stroke="#fff2c4" stroke-linecap="round" stroke-width="8" opacity=".85"/><path d="M48 55c-12-15-9-27 4-35 2 14 9 20 20 23" fill="#81b66a" stroke="#427747" stroke-width="4"/><path d="M46 53c-16-2-24-11-22-26 12 8 20 9 29 8" fill="#b2d77c" stroke="#427747" stroke-width="4"/></svg>
+            <svg class="reward-icon icon-seed-pack" viewBox="0 0 160 160"><path d="M48 30h64l-5 15 15 11-9 83H47l-9-83 15-11z" fill="#f5df9e" stroke="#765d36" stroke-width="5" stroke-linejoin="round"/><path d="M48 30h64M45 52h70" stroke="#c39a54" stroke-width="6" stroke-linecap="round"/><path d="M79 112c-18-16-20-35 0-48 20 13 18 32 0 48z" fill="#759b55" stroke="#45643e" stroke-width="4"/><path d="M79 109V80" stroke="#e8efbd" stroke-width="4"/><circle cx="80" cy="124" r="5" fill="#9b6735"/><circle cx="63" cy="128" r="4" fill="#9b6735"/><circle cx="97" cy="129" r="4" fill="#9b6735"/></svg>
+            <svg class="reward-icon icon-ticket" viewBox="0 0 190 140"><path d="M22 31a14 14 0 0 0 0 28v22a14 14 0 0 0 0 28h146a14 14 0 0 0 0-28V59a14 14 0 0 0 0-28z" fill="#f6d879" stroke="#7a5527" stroke-width="5"/><path d="M48 39v64" stroke="#a87b36" stroke-width="3" stroke-dasharray="5 6"/><rect x="72" y="48" width="73" height="45" rx="10" fill="#436d85"/><path d="M82 57h48v19H82z" fill="#d9f1ef"/><path d="M79 84h57l9 10H70z" fill="#274b5e"/><circle cx="86" cy="97" r="7" fill="#253943"/><circle cx="129" cy="97" r="7" fill="#253943"/><path d="M86 108h42" stroke="#7a5527" stroke-width="4" stroke-linecap="round"/></svg>
+          </div><h2 id="rewardTitle">PLANT SEED</h2><p id="rewardMessage">You completed the mission in time.</p>
+        </div>
+      </section>
+      <div class="game-head"><div><span class="eyebrow" id="levelLabel">LEVEL 1 / 20</span><h1 id="levelTitle">Cover every square</h1></div><span class="counter" id="progress">0 / 8</span></div>
+      <div class="endpoint-guide" aria-label="Start to finish"><span><b>S</b> Start</span><span class="guide-arrow" aria-hidden="true">→</span><span>Finish <b>E</b></span></div>
+      <div id="grid" class="grid" aria-label="Puzzle tiles"></div>
+    </div>
+    <div class="game-foot"><p id="hint" class="sr-only" aria-live="polite"></p><div class="path-controls"><button id="undo" class="secondary" disabled>Undo</button><button id="redo" class="secondary" disabled>Redo</button><button id="reset" class="secondary">Reset</button></div></div>
+    <section id="pauseScreen" class="pause-screen hidden" aria-label="Game paused"><div class="pause-panel"><h1>Paused</h1><button id="resumeGame" class="primary" type="button">Resume</button><button id="pauseExit" class="secondary" type="button">Exit</button></div></section>
+  </section>
+  <section id="postSurvey" class="screen hidden">
+    <header><span id="postSurveyEyebrow" class="eyebrow">EXPERIMENT 1 · FINAL QUESTIONS</span><h1 id="postSurveyTitle">About the game background</h1><p id="postSurveyIntro">Please answer these questions about the background you saw while playing.</p></header>
+    <form id="postSurveyForm" class="panel consent-panel">
+      <fieldset><legend>1. Were there plants in the game background?</legend>
+        <label class="consent-choice"><input type="radio" name="surveyPlants" value="yes" required><span>Yes</span></label>
+        <label class="consent-choice"><input type="radio" name="surveyPlants" value="no"><span>No</span></label>
+        <label class="consent-choice"><input type="radio" name="surveyPlants" value="not_sure"><span>Not sure</span></label>
+      </fieldset>
+      <fieldset><legend>2. About what percentage of the game background was covered by plants or greenery?</legend>
+        <div class="coverage-choices">
+          <label class="coverage-choice"><input type="radio" name="surveyCoverage" value="none" required><span>None</span></label>
+          <label class="coverage-choice"><input type="radio" name="surveyCoverage" value="10-20"><span>10–20%</span></label>
+          <label class="coverage-choice"><input type="radio" name="surveyCoverage" value="30-50"><span>30–50%</span></label>
+          <label class="coverage-choice"><input type="radio" name="surveyCoverage" value="60-80"><span>60–80%</span></label>
+          <label class="coverage-choice"><input type="radio" name="surveyCoverage" value="90-100"><span>90–100%</span></label>
+        </div>
+      </fieldset>
+      <fieldset><legend>3. How much did you notice the background while playing?</legend>
+        <p class="small scale-caption">1 = not at all · 5 = a lot</p>
+        <div class="scale-choices">
+          <label><input type="radio" name="surveyNotice" value="1" required><span>1</span></label>
+          <label><input type="radio" name="surveyNotice" value="2"><span>2</span></label>
+          <label><input type="radio" name="surveyNotice" value="3"><span>3</span></label>
+          <label><input type="radio" name="surveyNotice" value="4"><span>4</span></label>
+          <label><input type="radio" name="surveyNotice" value="5"><span>5</span></label>
+        </div>
+      </fieldset>
+      <button id="submitSurveyButton" class="primary" type="submit">Submit and finish</button><button id="closeSurveyPreview" class="secondary hidden" type="button">Close preview</button>
+    </form>
+  </section>
+  <section id="finish" class="screen hidden"><div class="panel"><span class="eyebrow" id="finishEyebrow">SESSION COMPLETE</span><h1 id="finishTitle">Thank you</h1><p id="summary"></p><button id="download" class="primary">Download prototype data</button><button id="again" class="secondary">Back to setup</button></div></section>
+</main><script src="config.js"></script><script src="levels.js"></script><script src="bonus-levels.js"></script><script src="app.js"></script>
+</body></html>
